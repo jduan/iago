@@ -35,6 +35,23 @@
     </pluginRepository>
   </pluginRepositories>
   <dependencies>
+    <!--<dependency>-->
+    <!--  <groupId>com.twitter</groupId>-->
+    <!--  <artifactId>event-logger-thrift</artifactId>-->
+    <!--  <version>0.0.3</version>-->
+    <!--  <scope>provided</scope>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>org.apache.thrift</groupId>
+      <artifactId>libthrift</artifactId>
+      <version>0.8.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>scrooge-runtime</artifactId>
+      <version>3.0.9</version>
+    </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
@@ -229,6 +246,44 @@
       </plugin>
       <plugin>
         <groupId>com.twitter</groupId>
+        <artifactId>scrooge-maven-plugin</artifactId>
+        <version>3.0.9</version>
+        <configuration>
+          <thriftNamespaceMappings>
+            <thriftNamespaceMapping>
+              <from>com.twitter.parrot.thrift</from>
+              <to>com.twitter.parrot.thrift</to>
+            </thriftNamespaceMapping>
+          </thriftNamespaceMappings>
+          <thriftOpts>
+            <!-- add other Scrooge command line options using thriftOpts -->
+            <thriftOpt>--finagle</thriftOpt>
+            <thriftOpt>--ostrich</thriftOpt>
+          </thriftOpts>
+          <!-- tell scrooge to extract thrifts from these artifacts -->
+          <!--<dependencyConfig>-->
+          <!--  <include>event-logger-thrift</include>-->
+          <!--</dependencyConfig>-->
+        </configuration>
+        <executions>
+          <execution>
+            <id>thrift-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>thrift-test-sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.twitter</groupId>
         <artifactId>maven-finagle-thrift-plugin</artifactId>
         <version>0.0.9</version> 
         <executions>
@@ -285,7 +340,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>target/generated-sources</source>
+                <source>target/generated-sources/thrift/scrooge</source>
               </sources>
             </configuration>
           </execution>

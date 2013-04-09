@@ -37,3 +37,4 @@ TAGS
 *.ipr
 *.iws
 git.properties
+tmp/

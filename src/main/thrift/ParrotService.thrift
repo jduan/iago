@@ -47,7 +47,7 @@ service ParrotServerService {
     ParrotStatus sendRequest(1: ParrotJobRef job, 2: list<string> lines),
     ParrotStatus getStatus(),
     void start(),
-    oneway void shutdown(),
+    void shutdown(),
     void pause(),
     void resume(),
     string fetchThreadStacks()
