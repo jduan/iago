@@ -283,51 +283,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>com.twitter</groupId>
-        <artifactId>maven-finagle-thrift-plugin</artifactId>
-        <version>0.0.9</version> 
-        <executions>
-          <execution>
-            <id>thrift-sources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <thriftGenerators>
-                <thriftGenerator>finagle</thriftGenerator>
-              </thriftGenerators>
-              <thriftOpts>
-                <thriftOpt>finagle</thriftOpt>
-              </thriftOpts>
-            </configuration>
-          </execution>
-          <execution>
-            <id>thrift-test-sources</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>testCompile</goal>
-            </goals>
-            <configuration>
-              <thriftGenerators>
-                <thriftGenerator>finagle</thriftGenerator>
-              </thriftGenerators>
-              <thriftOpts>
-                <thriftOpt>finagle</thriftOpt>
-              </thriftOpts>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <thriftGenerators>
-            <thriftGenerator>finagle</thriftGenerator>
-          </thriftGenerators>
-          <thriftOpts>
-            <thriftOpt>finagle</thriftOpt>
-          </thriftOpts>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>1.7</version>

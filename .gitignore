@@ -38,3 +38,5 @@ TAGS
 *.iws
 git.properties
 tmp/
+.settings/
+backup/
